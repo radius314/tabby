@@ -50,6 +50,7 @@
 		</td>
 		<td class="bmlt-column3">
 			{{> metaDataTemplate }}
+			<button id="bmlt-share-{{this.id_bigint}}" class="btn btn-small" onclick="navigator.share({ title: '{{this.meeting_name}}', url: document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : document.location.href})">Share</button>
 		</td>
 	</tr>
 {{/each}}

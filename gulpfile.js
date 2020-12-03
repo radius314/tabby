@@ -11,7 +11,7 @@ const notify = require('gulp-notify');
 let jsFilesNoJQuery = [
 	'bootstrap.min.js',
 	'select2.full.min.js',
-	'tablesaw.jquery.3.0.9.js',
+	'tablesaw.jquery.3.1.2.js',
 	'handlebars-v4.5.3.js',
 	'moment.js',
 	'moment-timezone.js',

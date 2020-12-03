@@ -125,6 +125,12 @@ function Crouton(config) {
 		google.maps.event.trigger(map_marker, "click");
 	};
 
+	self.highlightRow = function(id) {
+		jQuery(".bmlt-data-row > td").removeClass("rowHighlight");
+		jQuery("#meeting-data-row-" + id + " > td").addClass("rowHighlight");
+		//self.dayTab(marker['day_id']);
+	}
+
 	self.addToMapObjectCollection = function(obj) {
 		self.map_objects.push(obj);
 	};
@@ -811,6 +817,12 @@ Crouton.prototype.render = function(callback) {
 					self.loadGapi('crouton.initMap');
 				}
 
+				var share_id = 3223;
+				self.highlightRow(share_id);
+				$('html, body').animate({
+					scrollTop: $("#bmlt-share-" + share_id).offset().top - 300
+				}, 1000);
+
 				if (self.config['on_complete'] != null && isFunction(self.config['on_complete'])) {
 					self.config['on_complete']();
 				}
@@ -1048,9 +1060,7 @@ Crouton.prototype.initMap = function(callback) {
 
 		self.map_clusters.push(marker);
 		google.maps.event.addListener(marker, 'click', function (evt) {
-			jQuery(".bmlt-data-row > td").removeClass("rowHighlight");
-			jQuery("#meeting-data-row-" + marker['id'] + " > td").addClass("rowHighlight");
-			self.dayTab(marker['day_id']);
+			self.highlightRow(marker['id'])
 			infoWindow.setContent(marker_html);
 			infoWindow.open(self.map, marker);
 		});
